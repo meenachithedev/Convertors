@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <title>JSON to CSV Convertor </title>
+        <link rel="stylesheet" href="Calculator.css">
+        <script>
+            function convertJSONtocsv()
+            {
+              document.getElementById("res1").innerHTML="";
+              var text=document.getElementById("input1").value;
+              text=text.substring(1,text.length-1);
+              var arr=text.split("},");
+              var csvr=[];
+              var a;
+              if(arr.length>1)
+              a =arr[0]+"}";
+              else
+                 a=arr[0];
+              try{
+              var h=JSON.parse(a);
+              var head=Object.keys(h);
+              csvr.push(head.join(","));
+              for(var i=0;i<arr.length;i++)
+              {
+                if(i>=0 && i<arr.length-1){
+                 arr[i]+="}";
+                }
+                h=JSON.parse(arr[i]);
+                csvr.push(Object.values(h).join(","));
+              }
+              csvr=csvr.join("\n");
+              var b=new Blob([csvr],{ type: 'text/csv' });
+              const url = window.URL.createObjectURL(b);
+              var node=document.getElementById("div1");
+              var node2=document.getElementById("a1");
+                if(node2!=null)
+                node2.remove();
+              var node1=document.createElement('a');
+              var textToAdd = document. createTextNode("Here you go: Link to Download");
+              node1. appendChild(textToAdd);
+              node.appendChild(node1);
+              node1.setAttribute('href',url);
+              node1.setAttribute('download', 'download.csv');
+              node1.id="a1";
+            }
+            catch(err)
+            {
+                var node=document.getElementById("a1");
+                if(node!=null)
+                node.remove();
+                document.getElementById("res1").innerHTML="Incorrect Input!!!";
+            }
+            }
+            function clear_text()
+            {
+            document.getElementById("input1").value=" ";
+            document.getElementById("res1").innerHTML="";
+            }
+        </script>
+    </head>
+    <body>
+        <div class="topnav">
+            <a class="home" href="file:///C:/Users/meena/Documents/Projects/mainpage.html">Home</a>
+          </div>
+          <br>
+        <div class="div1" id="div1">
+            <h1>JSON to CSV File</h1>
+            <label> Input (array of JSON) </label><br>
+            <textarea id="input1" name="input" rows="5" cols="50"></textarea><br><br>
+            <input type="button" name="convert" value="Convert" onclick="convertJSONtocsv()"/>&nbsp;
+            <input type="button" name="clear" value="Clear" onclick="clear_text()"/><br><br><br>
+            <h3 id="res1"></h3>
+        </div>
+    </body>
+</html>

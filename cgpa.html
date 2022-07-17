@@ -1,0 +1,102 @@
+<html>
+    <head>
+        <title> CGPA CACULATOR </title>
+        <link rel="stylesheet" href="Calculator.css">
+
+    <body>  
+        <div class="topnav">
+            <a class="home" href="file:///C:/Users/meena/Documents/Projects/mainpage.html">Home</a>
+          </div>
+          <br>
+        <form>
+        <div class="div1">
+            <h1>CGPA CALCULATOR</h1>
+        <table id="table">
+            <tr>
+                <th>SUBJECTS </th>
+                <th>MARK </th>
+                <th>CREDITS </th>
+            </tr>
+            <tr>
+                <td>Subject 1</td>
+                <td><input type="text"/></td>
+                <td><input type="text"/></td>
+            </tr>
+        </table>
+        <div id="div2">
+        <input type="button" value="AddRow" id="add" onclick="addRow()"/>&nbsp;
+        <input type="button" value="DeleteRow" id="del" onclick="deleterow()"/><br>
+       </div><br><br><br>
+        <input type="button" value="Calculate CGPA" id="cal" onclick="calculate()"/>
+        <h3 id="res"></h3>
+        <h3 id="res1"></h3>
+        </div>
+    </form>
+    </body>
+    <script>
+        var no=2;
+        function addRow()
+        {
+            var t=document.getElementById("table");
+            var r=t.insertRow(t.rows.length);
+            r.insertCell(0).innerHTML='Subject '+ no++;
+            r.insertCell(1).innerHTML='<input type="text"/>';
+            r.insertCell(2).innerHTML='<input type="text"/>';
+        }
+        function calculate()
+        {
+            var t=document.getElementById("table");
+            var c1=0;
+            var sum=0;
+            var temp=1;
+            var credit;
+            var flag=0;
+            for(var i=1;i<t.rows.length;i++)
+            {
+                var c=t.rows.item(i).cells;
+                if(parseFloat(c.item(1).childNodes[0].value)>=0 && parseFloat(c.item(1).childNodes[0].value)<=20) credit=0;
+                else if(parseFloat(c.item(1).childNodes[0].value)>=21 && parseFloat(c.item(1).childNodes[0].value)<=32) credit=0;
+                else if(parseFloat(c.item(1).childNodes[0].value)>=33 && parseFloat(c.item(1).childNodes[0].value)<=40) credit=4;
+                else if(parseFloat(c.item(1).childNodes[0].value)>=41 && parseFloat(c.item(1).childNodes[0].value)<=50) credit=5;
+                else if(parseFloat(c.item(1).childNodes[0].value)>=51 && parseFloat(c.item(1).childNodes[0].value)<=60) credit=6;
+                else if(parseFloat(c.item(1).childNodes[0].value)>=61 && parseFloat(c.item(1).childNodes[0].value)<=70) credit=7;
+                else if(parseFloat(c.item(1).childNodes[0].value)>=71 && parseFloat(c.item(1).childNodes[0].value)<=80) credit=8;
+                else if(parseFloat(c.item(1).childNodes[0].value)>=81 && parseFloat(c.item(1).childNodes[0].value)<=90) credit=9;
+                else if(parseFloat(c.item(1).childNodes[0].value)>=91 && parseFloat(c.item(1).childNodes[0].value)<=100) credit=10;
+                else {
+                    document.getElementById("res").innerHTML="";
+                    document.getElementById("res1").innerHTML="Enter the Marks in the Range 0 to 100";
+                    clear_text();
+                    flag=1;
+                }
+                temp=(parseFloat(credit))*(parseFloat(c.item(2).childNodes[0].value));
+                c1=parseInt(c1)+parseInt(c.item(2).childNodes[0].value);
+                sum+=temp;
+                temp=1;
+            }
+            var result=parseFloat(sum)/parseFloat(c1);
+            if(flag!=1)
+            document.getElementById("res1").innerHTML="";
+            document.getElementById("res").innerHTML+="CGPA ="+result;
+        }
+        function deleterow() 
+           {
+            var len=document.getElementById("table").rows.length;
+            document.getElementById("table").deleteRow(len-1);
+            no=no-1;
+           }
+           function clear_text()
+           {
+            var t=document.getElementById("table");
+            var f=t.rows.item(1).cells;
+            c.item(1).childNodes[0].innerHTML="";
+            c.item(2).childNodes[0].innerHTML="";
+            for(var i=2;i<t.rows.length;i++)
+            {
+             t.deleteRow(i);
+             no--;
+            }
+           }
+     </script>
+    </head> 
+</html>

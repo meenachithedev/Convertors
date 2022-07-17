@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>
+		calculator
+	</title>
+<link rel="stylesheet" href="hike.css">
+<meta name="viewport" content="width=device-width; inital scale-='1'">
+</head>
+<body>
+	<h1>HIKE CALCULATOR</h1>
+	<div class="butdivi">
+		<button onclick="opt1()" class="start">FIND NEW SALARY</button>
+		<button onclick="opt2()"class="start">FIND HIKE</button>
+	</div>
+		<form>
+		
+		
+
+		<div id="salaryfind"><br><br>
+		<label for="salary">Present Salary</label><br>
+		<input type="text" id="salary" name="salary" >
+		<br><br>
+		<label for="hike">Percentage of Hike</label><br>
+		<input type="text" id="hike" name="hike">
+		<br>
+		<br>
+		<button type="button" onclick="myFn();">Calculate</button>
+			<p>Result is: </p>
+	<p id=res1></p>
+		</div></form>
+		<form>
+		<div id="radio-per"><br><br>
+			<label for="salary">Previous Salary</label><br>
+		<input type="text" id="salary" name="salary" >
+		<br><br>
+		<label for="ns">New Salary</label><br>
+		<input type="text" id="ns" name="ns">
+		<br>
+		<br>
+		<button type="button" onclick="perFn();">Calculate</button>
+<p>Result is:</p>
+	<p id=re></p>
+		</div>
+	</form>
+
+
+<script >
+	function perFn() {
+		var sal=(document.getElementById('salary').value);
+	    var newsal=(document.getElementById('ns').value);
+	    var mid=newsal-sal;
+	    var res=parseFloat(mid)/parseFloat(sal)
+		var result=+(res)*100;
+		document.getElementById('re').innerHTML=result+"%";
+		}
+	function myFn() {
+
+ 
+		var sal=(document.getElementById('salary').value);
+	    var hike=(document.getElementById('hike').value);
+	    var res=(sal*hike*0.01);
+	    var last=parseInt(res)+parseInt(sal);
+		document.getElementById('res1').innerHTML=last+"rupees";
+		
+	}
+
+		function opt1(){
+			document.getElementById("salaryfind").style.display="block";
+			document.getElementById("radio-per").style.display="none";
+
+		}	
+	function opt2(){
+			document.getElementById("radio-per").style.display="block";
+			document.getElementById("salaryfind").style.display="none";
+
+		}	
+		
+</script> 
+
+
+</body>

@@ -1,0 +1,84 @@
+body{
+	background-color:#D3D3D3;
+	font-family:sans-serif;
+}
+button{
+	width:265px;
+	border-style:inset;
+	padding: 10px 10px;
+	background-color: #003366;
+	font-size: 20px;
+	color:white;
+	border-color: white;
+	text-align: center;
+	height: 45px;
+}
+.start{
+	width:250px;
+	border-style:inset;
+	padding: 10px 10px;
+	background-color: #003366;
+	font-size: 20px;
+	color:white;
+	border-color: white;
+	text-align: center;
+	height: 45px;
+	margin: 10px 500px;
+}
+label
+{
+	text-align: center;
+	color: black;
+	font-size: 30px;
+	font-family: sans-serif;
+}
+input[type="text"]
+{
+	width:250px;
+	border-style: groove;
+	padding: 5px 5px;
+	font-size:25px;
+	color:black;
+	height: 25px;
+}
+h1{
+	color:#003366;
+	text-align: center;
+}
+p{
+	font-size: 30px;
+	font-family: sans-serif;
+
+}
+input[type="radio"]
+{
+	width:17px;
+}
+#salaryfind {
+  max-width:800px;
+  max-height:450px;
+  margin: auto;
+  background-color:	white;
+  border: 3px solid #003366;
+  text-align: center;
+}
+#radio-per{
+	max-width:800px;
+  max-height:450px;
+  margin: auto;
+  background-color:	white;
+  border: 3px solid #003366;
+  text-align: center;
+}
+.butdivi{
+max-width:1400px;
+max-height:400px;
+text-align: center;
+
+}
+#radio-per{
+display: none;
+}
+#salaryfind{
+	display: none;
+}
